@@ -8,11 +8,24 @@ console.log("app.component page success");
   template: `
     <div class="container">
       <h1>Food Entry List</h1>
-
+      <div *ngFor = "#entry of entries">
+      <ul>
+      <li>{{entry.name}}</li>
+      <li>{{entry.details}}</li>
+      <li>{{entry.calories}}</li>
+      </ul>
+      </div>
     <div>
   `
 })
 export class AppComponent {
+  public entries: Entry[];
+  constructor() {
+    this.entries = [
+      new Entry("sandwhich", "its got good stuff", 444),
+      new Entry("soup", "its got other things", 333)
+    ];
+  }
   // // public tasks: Task[];
   // constructor(){
   //   // this.tasks = [
