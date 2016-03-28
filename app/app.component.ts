@@ -8,6 +8,13 @@ console.log("app.component page success");
   template: `
     <div class="container">
       <h1>Food Entry List</h1>
+
+      <input placeholder = "Name" #name>
+      <input placeholder = "Details" #details>
+      <input placeholder = "Calories" #calories>
+      <button (click)= "AddEntry(name.value, details.value, calories.value)" >Input Entry</button>
+
+
       <div *ngFor = "#entry of entries">
       <ul>
       <li>{{entry.name}}</li>
@@ -26,16 +33,10 @@ export class AppComponent {
       new Entry("soup", "its got other things", 333)
     ];
   }
-  // // public tasks: Task[];
-  // constructor(){
-  //   // this.tasks = [
-  //   //   new Task("Create To-Do List app.", 0),
-  //   //   new Task("Learn Kung Fu.", 1),
-  //   //   new Task("Rewatch all the Lord of the Rings movies.", 2),
-  //   //   new Task("Do the laundry.", 3)
-  //   // ];
-  // }
-  // taskWasSelected(clickedTask: Task): void {
-  //   console.log('parent', clickedTask);
-  // }
+  AddEntry(name: string, details: string, cals: number):void {
+    this.entries.push(
+      new Entry(name, details, cals)
+    );
+    console.log(this.entries);
+  }
 }
