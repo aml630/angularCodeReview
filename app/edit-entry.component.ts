@@ -9,16 +9,16 @@ import { EntryComponent } from './entry.component';
   template: `
     <hr />
     <div class = "task-form">
+    <h3>Edit Name: {{entry.name}}</h3>
+    <input [(ngModel)] = "entry.name">
+    </div>
+    <div class = "task-form">
     <h3>Edit Description: {{entry.details}}</h3>
-    <input [(ngModel)] = "entry.details" class = "task-form">
+    <input [(ngModel)] = "entry.details">
     </div>
     <div class = "task-form">
-    <h3>Edit Description: {{entry.name}}</h3>
-    <input [(ngModel)] = "entry.name" class = "task-form">
-    </div>
-    <div class = "task-form">
-    <h3>Edit Description: {{entry.calories}}</h3>
-    <input [(ngModel)] = "entry.calories" class = "task-form">
+    <h3>Edit Cals: {{entry.calories}}</h3>
+    <input [(ngModel)] = "entry.calories">
     </div>
   `
 })

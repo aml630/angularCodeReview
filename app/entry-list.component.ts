@@ -4,22 +4,18 @@ import { EntryComponent } from './entry.component';
 import { EditComponent } from './edit-entry.component';
 import { CalSortPipe } from './calorie.pipe';
 
-
-
-
 @Component({
   selector: 'my-list',
   inputs: ['testEntries'],
   pipes: [CalSortPipe],
-
   directives: [EntryComponent, EditComponent],
   template: `
     <select (change)="onChange($event.target.value)">
       <option value="low">Low Cal</option>
       <option value="notLow">Not As Low Cal</option>
-      <option value="noCal" selected="selected">All Cals</option>
+      <option value="noCal" selected="selected">All Foods</option>
     </select>
-    <div *ngFor = "#entry of testEntries | calCount:FilterDone" (click) = "entryClicked(entry)" >
+    <div *ngFor = "#entry of testEntries | calCount:filterCal" (click) = "entryClicked(entry)" >
       <ul>
       <entry [testEntry] = "entry"></entry>
       </ul>
@@ -30,9 +26,7 @@ import { CalSortPipe } from './calorie.pipe';
 export class EntryListComponent {
   public testEntries: Entry[];
   public selectedEntry: Entry;
-  public filterCal: string = "noCal"
-  public filterDone: string = "Nothing";
-
+  public filterCal: string = "nocal"
 
   constructor() {
 
@@ -46,7 +40,7 @@ export class EntryListComponent {
     console.log(this.selectedEntry);
   }
   onChange(filterOption) {
-    this.filterDone = filterOption;
-    console.log(this.filterDone)
+    this.filterCal = filterOption;
+    console.log(this.filterCal)
   }
 }
