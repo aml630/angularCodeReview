@@ -1,10 +1,13 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { Entry } from './entry.model';
+import { EntryListComponent } from './entry-list.component';
+
 
 console.log("app.component page success");
 
 @Component({
   selector: 'my-app',
+  directives: [EntryListComponent],
   template: `
     <div class="container">
       <h1>Food Entry List</h1>
@@ -14,14 +17,7 @@ console.log("app.component page success");
       <input placeholder = "Calories" #calories>
       <button (click)= "AddEntry(name.value, details.value, calories.value)" >Input Entry</button>
 
-
-      <div *ngFor = "#entry of entries">
-      <ul>
-      <li>{{entry.name}}</li>
-      <li>{{entry.details}}</li>
-      <li>{{entry.calories}}</li>
-      </ul>
-      </div>
+      <my-list [testEntries] = "entries"></my-list>
     <div>
   `
 })
