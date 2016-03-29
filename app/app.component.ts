@@ -33,6 +33,5 @@ export class AppComponent {
     this.entries.push(
       new Entry(name, details, cals)
     );
-    console.log(this.entries);
   }
 }
