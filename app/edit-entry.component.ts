@@ -2,7 +2,6 @@ import { Component, EventEmitter } from 'angular2/core';
 import { Entry } from './entry.model';
 import { EntryComponent } from './entry.component';
 
-
 @Component({
   selector: 'edit-entry',
   inputs: ['entry'],
@@ -22,7 +21,7 @@ import { EntryComponent } from './entry.component';
     </div>
   `
 })
+
 export class EditComponent {
   public entry: Entry = new Entry("example", "stuff", 33);
-
 }
