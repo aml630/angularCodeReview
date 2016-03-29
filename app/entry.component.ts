@@ -1,16 +1,15 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { Entry } from './entry.model';
+import { EditComponent } from './edit-entry.component';
+
 
 @Component({
   selector: 'entry',
   inputs: ['testEntry'],
   template: `
-      <button *ngIf = "testEntry.show" (click) = "showInfo(false)">{{testEntry.name}}</button>
-
-      <button *ngIf = "!testEntry.show" (click) = "showInfo(true)">{{testEntry.name}}</button>
-
+      <h3 *ngIf = "testEntry.show" (click) = "showInfo(false)">{{testEntry.name}}</h3>
+      <h3 *ngIf = "!testEntry.show" (click) = "showInfo(true)">{{testEntry.name}}</h3>
       <li *ngIf="testEntry.show">{{testEntry.details}}</li>
-
       <li *ngIf="testEntry.show">{{testEntry.calories}}</li>
   `
 })

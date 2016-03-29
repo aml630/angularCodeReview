@@ -1,7 +1,7 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { Entry } from './entry.model';
 import { EntryListComponent } from './entry-list.component';
-// import { EditComponent } from './edit-entry.component';
+import { CalSortPipe } from './calorie.pipe';
 
 @Component({
   selector: 'my-app',
@@ -9,6 +9,7 @@ import { EntryListComponent } from './entry-list.component';
   template: `
     <div class="container">
       <h1>Food Entry List</h1>
+
 
       <input placeholder = "Name" #name>
       <input placeholder = "Details" #details>
@@ -22,6 +23,7 @@ import { EntryListComponent } from './entry-list.component';
 })
 export class AppComponent {
   public entries: Entry[];
+  public filterCal: string = "noCal"
   constructor() {
     this.entries = [
       new Entry("sandwhich", "its got good stuff", 444),
@@ -33,4 +35,5 @@ export class AppComponent {
       new Entry(name, details, cals)
     );
   }
+
 }

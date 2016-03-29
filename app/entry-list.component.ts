@@ -2,15 +2,24 @@ import { Component, EventEmitter } from 'angular2/core';
 import { Entry } from './entry.model';
 import { EntryComponent } from './entry.component';
 import { EditComponent } from './edit-entry.component';
+import { CalSortPipe } from './calorie.pipe';
+
 
 
 
 @Component({
   selector: 'my-list',
   inputs: ['testEntries'],
+  pipes: [CalSortPipe],
+
   directives: [EntryComponent, EditComponent],
   template: `
-    <div *ngFor = "#entry of testEntries" (click) = "entryClicked(entry)">
+    <select (change)="onChange($event.target.value)">
+      <option value="low">Low Cal</option>
+      <option value="notLow">Not As Low Cal</option>
+      <option value="noCal" selected="selected">All Cals</option>
+    </select>
+    <div *ngFor = "#entry of testEntries | calCount:FilterDone" (click) = "entryClicked(entry)" >
       <ul>
       <entry [testEntry] = "entry"></entry>
       </ul>
@@ -21,8 +30,12 @@ import { EditComponent } from './edit-entry.component';
 export class EntryListComponent {
   public testEntries: Entry[];
   public selectedEntry: Entry;
+  public filterCal: string = "noCal"
+  public filterDone: string = "Nothing";
+
 
   constructor() {
+
     this.testEntries = [
       new Entry("child", "its got good stuff", 444),
       new Entry("child", "its got other things", 333)
@@ -31,5 +44,9 @@ export class EntryListComponent {
   entryClicked(clickedEntry: Entry):void {
     this.selectedEntry = clickedEntry;
     console.log(this.selectedEntry);
+  }
+  onChange(filterOption) {
+    this.filterDone = filterOption;
+    console.log(this.filterDone)
   }
 }
