@@ -1,9 +1,7 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { Entry } from './entry.model';
 import { EntryListComponent } from './entry-list.component';
-
-
-console.log("app.component page success");
+// import { EditComponent } from './edit-entry.component';
 
 @Component({
   selector: 'my-app',
@@ -18,6 +16,7 @@ console.log("app.component page success");
       <button (click)= "AddEntry(name.value, details.value, calories.value)" >Input Entry</button>
 
       <my-list [testEntries] = "entries"></my-list>
+
     <div>
   `
 })
